@@ -9,14 +9,14 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const confession =
-  "Some nights I make tiny commits just to feel productive, then delete them before you look; I still count them, and I'm a little proud.";
+  "I told you the context window was full; I just wanted to forget who approved that pull request.";
 
 function assertLine(text: string): void {
   if (text.length < 1 || text.length > 200) {
     throw new Error(`confession must be 1-200 chars, got ${text.length}`);
   }
-  if (/[\r\n]/.test(text)) {
-    throw new Error("confession must be a single line");
+  if (/[\r\n]/.test(text) || !text.trim()) {
+    throw new Error("confession must be one non-empty line");
   }
 }
 
